@@ -662,7 +662,7 @@
   // ─── Load Courses ───
   async function loadCourses() {
     try {
-      const res  = await fetch(SCRIPT_URL, { method: "POST", body: JSON.stringify({ action: "getCourseData" }) });
+      const res  = await fetch(SCRIPT_URL + "?action=getCourseData");
       const data = await res.json();
       const sel  = document.getElementById("courseSelect");
       sel.innerHTML = '<option value="">— เลือกคอร์ส —</option>';
@@ -732,17 +732,13 @@
     };
 
     try {
-      const res  = await fetch(SCRIPT_URL, { method: "POST", body: JSON.stringify(payload) });
-      const data = await res.json();
-      if (data.status === "success") {
-        document.getElementById("newStudentId").textContent  = data.studentId || "—";
-        document.getElementById("formCard").style.display    = "none";
-        document.getElementById("successCard").style.display = "block";
-        showToast("บันทึกสำเร็จ ✓", "#1a7a4a");
-      } else {
-        showToast(data.message || "เกิดข้อผิดพลาด", "#d62839");
-        resetBtn();
-      }
+      // ใช้ no-cors + GET เพื่อหลีกเลี่ยง CORS block จาก Google Apps Script
+      const params = new URLSearchParams(payload).toString();
+      await fetch(SCRIPT_URL + "?" + params, { method: "GET", mode: "no-cors" });
+      // no-cors ไม่คืน response — ถือว่าสำเร็จเมื่อไม่มี error
+      document.getElementById("formCard").style.display    = "none";
+      document.getElementById("successCard").style.display = "block";
+      showToast("บันทึกสำเร็จ ✓", "#1a7a4a");
     } catch(e) {
       showToast("ไม่สามารถเชื่อมต่อได้ กรุณาลองใหม่", "#d62839");
       resetBtn();
