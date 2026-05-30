@@ -659,19 +659,27 @@
     }
   }
 
-  // ─── Load Courses ───
-  async function loadCourses() {
-    try {
-      const res  = await fetch(SCRIPT_URL + "?action=getCourseData");
-      const data = await res.json();
-      const sel  = document.getElementById("courseSelect");
+  // ─── Load Courses via JSONP ───
+  function loadCourses() {
+    const sel = document.getElementById("courseSelect");
+    const cbName = "cb_courses_" + Date.now();
+    window[cbName] = function(data) {
       sel.innerHTML = '<option value="">— เลือกคอร์ส —</option>';
       (data.data || []).forEach(c => {
-        sel.innerHTML += `<option value="${c.id}">${c.name}</option>`;
+        const o = document.createElement("option");
+        o.value = c.id; o.textContent = c.name;
+        sel.appendChild(o);
       });
-    } catch(e) {
-      document.getElementById("courseSelect").innerHTML = '<option value="">โหลดไม่สำเร็จ ลองรีเฟรช</option>';
-    }
+      delete window[cbName];
+      document.getElementById("jsonp-courses").remove();
+    };
+    const s = document.createElement("script");
+    s.id  = "jsonp-courses";
+    s.src = SCRIPT_URL + "?action=getCourseData&callback=" + cbName;
+    s.onerror = () => {
+      sel.innerHTML = '<option value="">โหลดไม่สำเร็จ ลองรีเฟรช</option>';
+    };
+    document.body.appendChild(s);
   }
 
   // ─── Type Toggle ───
@@ -731,25 +739,60 @@
       courseId:    selectedType === "Course" ? document.getElementById("courseSelect").value : ""
     };
 
-    try {
-      // ใช้ no-cors + GET เพื่อหลีกเลี่ยง CORS block จาก Google Apps Script
-      const params = new URLSearchParams(payload).toString();
-      await fetch(SCRIPT_URL + "?" + params, { method: "GET", mode: "no-cors" });
-      // no-cors ไม่คืน response — ถือว่าสำเร็จเมื่อไม่มี error
-      document.getElementById("formCard").style.display    = "none";
-      document.getElementById("successCard").style.display = "block";
-      showToast("บันทึกสำเร็จ ✓", "#1a7a4a");
-    } catch(e) {
-      showToast("ไม่สามารถเชื่อมต่อได้ กรุณาลองใหม่", "#d62839");
-      resetBtn();
-    }
-
     function resetBtn() {
       btn.disabled          = false;
       spinner.style.display = "none";
       icon.style.display    = "block";
       text.textContent      = "ยืนยันสมัคร";
     }
+
+    // ── ส่งผ่าน fetch POST content-type text/plain (GAS รับได้ ไม่ติด CORS preflight)
+    try {
+      const res  = await fetch(SCRIPT_URL, {
+        method:  "POST",
+        headers: { "Content-Type": "text/plain;charset=utf-8" },
+        body:    JSON.stringify(payload)
+      });
+      const data = await res.json();
+      if (data.status === "success") {
+        document.getElementById("formCard").style.display    = "none";
+        document.getElementById("successCard").style.display = "block";
+        showToast("บันทึกสำเร็จ ✓", "#1a7a4a");
+      } else {
+        showToast(data.message || "เกิดข้อผิดพลาด กรุณาลองใหม่", "#d62839");
+        resetBtn();
+      }
+    } catch(e) {
+      // fallback: ถ้า CORS block ให้ลองผ่าน JSONP submit
+      submitViaJsonp(payload, resetBtn);
+    }
+  }
+
+  // ── JSONP fallback สำหรับ submit ──
+  function submitViaJsonp(payload, onError) {
+    const cbName = "cb_submit_" + Date.now();
+    window[cbName] = function(data) {
+      delete window[cbName];
+      const el = document.getElementById("jsonp-submit");
+      if (el) el.remove();
+      if (data.status === "success") {
+        document.getElementById("formCard").style.display    = "none";
+        document.getElementById("successCard").style.display = "block";
+        showToast("บันทึกสำเร็จ ✓", "#1a7a4a");
+      } else {
+        showToast(data.message || "เกิดข้อผิดพลาด", "#d62839");
+        onError();
+      }
+    };
+    const params = new URLSearchParams(payload).toString();
+    const s = document.createElement("script");
+    s.id  = "jsonp-submit";
+    s.src = SCRIPT_URL + "?" + params + "&callback=" + cbName;
+    s.onerror = () => {
+      showToast("ไม่สามารถเชื่อมต่อได้ กรุณาลองใหม่", "#d62839");
+      onError();
+    };
+    document.body.appendChild(s);
   }
 
   // ─── Reset ───
