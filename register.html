@@ -492,21 +492,20 @@
     </div>
 
     <!-- ชื่อเล่น -->
-    <div class="field-row">
-      <div class="field">
-        <label class="label" for="nickname">ชื่อเล่น (ไทย) <span class="req">*</span></label>
-        <div class="inp-wrap">
-          <span class="ico"><svg viewBox="0 0 24 24"><path d="M20 7H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/><path d="M12 7v10"/></svg></span>
-          <input type="text" id="nickname" placeholder="น้องโดม" autocomplete="off">
-        </div>
-        <p class="err" id="nickErr">กรุณากรอก</p>
+    <div class="field">
+      <label class="label" for="nickname">ชื่อเล่น (ไทย) <span class="req">*</span></label>
+      <div class="inp-wrap">
+        <span class="ico"><svg viewBox="0 0 24 24"><path d="M20 7H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/><path d="M12 7v10"/></svg></span>
+        <input type="text" id="nickname" placeholder="เช่น น้องโดม" autocomplete="off">
       </div>
-      <div class="field">
-        <label class="label" for="nicknameEng">ชื่อเล่น (ENG)</label>
-        <div class="inp-wrap">
-          <span class="ico"><svg viewBox="0 0 24 24"><path d="M20 7H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/><path d="M12 7v10"/></svg></span>
-          <input type="text" id="nicknameEng" placeholder="Dome" autocomplete="off">
-        </div>
+      <p class="err" id="nickErr">กรุณากรอกชื่อเล่น</p>
+    </div>
+
+    <div class="field">
+      <label class="label" for="nicknameEng">ชื่อเล่น (ENG)</label>
+      <div class="inp-wrap">
+        <span class="ico"><svg viewBox="0 0 24 24"><path d="M20 7H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/><path d="M12 7v10"/></svg></span>
+        <input type="text" id="nicknameEng" placeholder="e.g. Dome" autocomplete="off">
       </div>
     </div>
 
@@ -542,8 +541,8 @@
           <span class="chev"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></span>
         </div>
         <div class="sel-wrap">
-          <select id="dobYear" aria-label="ปี (พ.ศ.)">
-            <option value="">ปี (พ.ศ.)</option>
+          <select id="dobYear" aria-label="ปี (ค.ศ.)">
+            <option value="">ปี (ค.ศ.)</option>
           </select>
           <span class="chev"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></span>
         </div>
@@ -651,7 +650,7 @@
       dayEl.appendChild(o);
     }
     const yearEl = document.getElementById("dobYear");
-    const now = new Date().getFullYear() + 543; // พ.ศ.
+    const now = new Date().getFullYear(); // ค.ศ.
     for (let y = now; y >= now - 80; y--) {
       const o = document.createElement("option");
       o.value = y;
