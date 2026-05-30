@@ -47,36 +47,25 @@
       padding: 0 4px;
     }
     .logo-mark {
-      width: 52px;
-      height: 52px;
+      width: 52px; height: 52px;
       background: var(--accent);
       border-radius: 14px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      display: flex; align-items: center; justify-content: center;
       flex-shrink: 0;
     }
     .logo-mark svg { width: 26px; height: 26px; fill: #fff; }
     .header-text h1 {
       font-family: 'Kanit', sans-serif;
-      font-size: 22px;
-      font-weight: 900;
+      font-size: 22px; font-weight: 900;
       color: var(--text);
-      letter-spacing: -0.3px;
-      line-height: 1.15;
+      letter-spacing: -0.3px; line-height: 1.15;
     }
     .header-text h1 em { color: var(--accent); font-style: normal; }
-    .header-text p {
-      font-size: 14px;
-      color: var(--sub);
-      margin-top: 2px;
-      font-weight: 400;
-    }
+    .header-text p { font-size: 14px; color: var(--sub); margin-top: 2px; font-weight: 400; }
 
     /* ─── CARD ─── */
     .card {
-      width: 100%;
-      max-width: 520px;
+      width: 100%; max-width: 520px;
       background: var(--card);
       border-radius: 20px;
       border: 1px solid var(--border);
@@ -86,81 +75,35 @@
     /* ─── SECTION HEADER ─── */
     .sec-head {
       padding: 20px 24px 0;
-      display: flex;
-      align-items: center;
-      gap: 10px;
+      display: flex; align-items: center; gap: 10px;
       margin-bottom: 18px;
     }
     .sec-icon {
-      width: 32px;
-      height: 32px;
+      width: 32px; height: 32px;
       background: var(--accent-l);
       border-radius: 9px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      display: flex; align-items: center; justify-content: center;
     }
     .sec-icon svg { width: 16px; height: 16px; stroke: var(--accent); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-    .sec-label {
-      font-family: 'Kanit', sans-serif;
-      font-size: 15px;
-      font-weight: 700;
-      color: var(--text);
-    }
+    .sec-label { font-family: 'Kanit', sans-serif; font-size: 15px; font-weight: 700; color: var(--text); }
 
     /* ─── SECTION BODY ─── */
-    .sec-body {
-      padding: 0 24px 24px;
-    }
-
-    .divider {
-      height: 1px;
-      background: var(--border);
-      margin: 0 0 0 0;
-    }
+    .sec-body { padding: 0 24px 24px; }
+    .divider { height: 1px; background: var(--border); }
 
     /* ─── FIELD ─── */
     .field { margin-bottom: 16px; }
     .field:last-child { margin-bottom: 0; }
-    .field-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      margin-bottom: 16px;
-    }
+    .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px; }
     .field-row .field { margin-bottom: 0; }
 
-    .label {
-      display: block;
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--sub);
-      margin-bottom: 7px;
-      letter-spacing: 0.01em;
-    }
+    .label { display: block; font-size: 13px; font-weight: 600; color: var(--sub); margin-bottom: 7px; letter-spacing: 0.01em; }
     .label .req { color: var(--accent); }
 
     /* ─── INPUTS ─── */
     .inp-wrap { position: relative; }
-    .inp-wrap .ico {
-      position: absolute;
-      left: 13px;
-      top: 50%;
-      transform: translateY(-50%);
-      pointer-events: none;
-      transition: stroke .2s, color .2s;
-    }
-    .inp-wrap .ico svg {
-      width: 17px;
-      height: 17px;
-      stroke: var(--hint);
-      fill: none;
-      stroke-width: 1.8;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-      display: block;
-      transition: stroke .2s;
-    }
+    .inp-wrap .ico { position: absolute; left: 13px; top: 50%; transform: translateY(-50%); pointer-events: none; }
+    .inp-wrap .ico svg { width: 17px; height: 17px; stroke: var(--hint); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; display: block; transition: stroke .2s; }
     .inp-wrap:focus-within .ico svg { stroke: var(--accent); }
 
     input[type="text"],
@@ -173,263 +116,88 @@
       border: 1.5px solid var(--border);
       border-radius: 12px;
       font-family: 'Sarabun', sans-serif;
-      font-size: 16px;
-      font-weight: 400;
-      color: var(--text);
-      outline: none;
+      font-size: 16px; font-weight: 400;
+      color: var(--text); outline: none;
       transition: border-color .2s, background .2s;
-      -webkit-appearance: none;
-      appearance: none;
+      -webkit-appearance: none; appearance: none;
     }
     input::placeholder { color: var(--hint); }
-    input:focus, select:focus {
-      border-color: var(--accent);
-      background: #fff;
-    }
-
-    /* no-icon inputs */
-    .bare input {
-      padding-left: 14px;
-    }
+    input:focus, select:focus { border-color: var(--accent); background: #fff; }
 
     /* select chevron */
     .sel-wrap { position: relative; }
     .sel-wrap select { padding-left: 42px; padding-right: 38px; cursor: pointer; }
-    .sel-wrap .chev {
-      position: absolute;
-      right: 13px;
-      top: 50%;
-      transform: translateY(-50%);
-      pointer-events: none;
-    }
-    .sel-wrap .chev svg {
-      width: 15px; height: 15px;
-      stroke: var(--hint); fill: none;
-      stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
-    }
+    .sel-wrap .chev { position: absolute; right: 13px; top: 50%; transform: translateY(-50%); pointer-events: none; }
+    .sel-wrap .chev svg { width: 15px; height: 15px; stroke: var(--hint); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 
     /* ─── DOB ROW ─── */
-    .dob-row {
-      display: grid;
-      grid-template-columns: 2fr 2fr 3fr;
-      gap: 8px;
-    }
-    .dob-row .sel-wrap select {
-      padding-left: 12px;
-      padding-right: 30px;
-      font-size: 15px;
-    }
+    .dob-row { display: grid; grid-template-columns: 2fr 2fr 3fr; gap: 8px; }
+    .dob-row .sel-wrap select { padding-left: 12px; padding-right: 30px; font-size: 15px; }
     .dob-row .sel-wrap .chev { right: 9px; }
 
     /* ─── TYPE TOGGLE ─── */
-    .type-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 8px;
-    }
+    .type-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
     .type-btn {
       padding: 14px 10px;
       background: var(--input-bg);
       border: 1.5px solid var(--border);
       border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 9px;
+      display: flex; align-items: center; justify-content: center; gap: 9px;
       font-family: 'Kanit', sans-serif;
-      font-size: 15px;
-      font-weight: 600;
-      color: var(--sub);
-      cursor: pointer;
+      font-size: 15px; font-weight: 600;
+      color: var(--sub); cursor: pointer;
       transition: all .2s;
     }
-    .type-btn svg {
-      width: 18px; height: 18px;
-      stroke: var(--hint); fill: none;
-      stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round;
-      transition: stroke .2s;
-    }
-    .type-btn.active {
-      background: var(--accent-l);
-      border-color: var(--accent);
-      color: var(--accent);
-    }
+    .type-btn svg { width: 18px; height: 18px; stroke: var(--hint); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; transition: stroke .2s; }
+    .type-btn.active { background: var(--accent-l); border-color: var(--accent); color: var(--accent); }
     .type-btn.active svg { stroke: var(--accent); }
 
     /* ─── COURSE SLIDE ─── */
-    .course-slide {
-      overflow: hidden;
-      max-height: 0;
-      opacity: 0;
-      transition: max-height .4s ease, opacity .3s ease, margin .3s ease;
-      margin-top: 0;
-    }
-    .course-slide.open {
-      max-height: 120px;
-      opacity: 1;
-      margin-top: 16px;
-    }
+    .course-slide { overflow: hidden; max-height: 0; opacity: 0; transition: max-height .4s ease, opacity .3s ease, margin .3s ease; margin-top: 0; }
+    .course-slide.open { max-height: 120px; opacity: 1; margin-top: 16px; }
 
     /* ─── ERROR ─── */
-    .err {
-      display: none;
-      font-size: 12px;
-      font-weight: 600;
-      color: var(--accent);
-      margin-top: 5px;
-    }
+    .err { display: none; font-size: 12px; font-weight: 600; color: var(--accent); margin-top: 5px; }
     .err.show { display: block; }
 
     /* ─── SUBMIT AREA ─── */
-    .submit-area {
-      padding: 20px 24px 24px;
-      background: var(--bg);
-      border-top: 1px solid var(--border);
-    }
+    .submit-area { padding: 20px 24px 24px; background: var(--bg); border-top: 1px solid var(--border); }
     .btn-submit {
-      width: 100%;
-      padding: 16px;
-      background: var(--accent);
-      color: #fff;
-      border: none;
-      border-radius: 14px;
+      width: 100%; padding: 16px;
+      background: var(--accent); color: #fff;
+      border: none; border-radius: 14px;
       font-family: 'Kanit', sans-serif;
-      font-size: 17px;
-      font-weight: 700;
-      cursor: pointer;
-      transition: background .2s, transform .15s;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 9px;
+      font-size: 17px; font-weight: 700;
+      cursor: pointer; transition: background .2s, transform .15s;
+      display: flex; align-items: center; justify-content: center; gap: 9px;
       letter-spacing: 0.01em;
     }
-    .btn-submit svg {
-      width: 19px; height: 19px;
-      stroke: #fff; fill: none;
-      stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
-    }
+    .btn-submit svg { width: 19px; height: 19px; stroke: #fff; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
     .btn-submit:hover { background: var(--accent-d); }
     .btn-submit:active { transform: scale(0.99); }
     .btn-submit:disabled { opacity: .65; cursor: not-allowed; transform: none; }
 
-    .footer-note {
-      text-align: center;
-      font-size: 12px;
-      color: var(--hint);
-      margin-top: 12px;
-      line-height: 1.6;
-      display: flex;
-      align-items: flex-start;
-      justify-content: center;
-      gap: 5px;
-    }
-    .footer-note svg {
-      width: 13px; height: 13px;
-      stroke: var(--hint); fill: none;
-      stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
-      flex-shrink: 0; margin-top: 2px;
-    }
+    .footer-note { text-align: center; font-size: 12px; color: var(--hint); margin-top: 12px; line-height: 1.6; display: flex; align-items: flex-start; justify-content: center; gap: 5px; }
+    .footer-note svg { width: 13px; height: 13px; stroke: var(--hint); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; margin-top: 2px; }
 
     /* ─── SPINNER ─── */
-    .spinner {
-      width: 19px; height: 19px;
-      border: 2.5px solid rgba(255,255,255,.4);
-      border-top-color: #fff;
-      border-radius: 50%;
-      animation: spin .7s linear infinite;
-      display: none;
-    }
+    .spinner { width: 19px; height: 19px; border: 2.5px solid rgba(255,255,255,.4); border-top-color: #fff; border-radius: 50%; animation: spin .7s linear infinite; display: none; }
     @keyframes spin { to { transform: rotate(360deg); } }
 
     /* ─── SUCCESS ─── */
-    #successCard {
-      display: none;
-      width: 100%;
-      max-width: 520px;
-    }
-    .success-inner {
-      background: var(--card);
-      border-radius: 20px;
-      border: 1px solid var(--border);
-      padding: 40px 24px;
-      text-align: center;
-    }
-    .ok-ring {
-      width: 72px; height: 72px;
-      border-radius: 50%;
-      background: var(--success-l);
-      border: 2px solid var(--success-b);
-      display: flex; align-items: center; justify-content: center;
-      margin: 0 auto 20px;
-    }
-    .ok-ring svg {
-      width: 30px; height: 30px;
-      stroke: var(--success); fill: none;
-      stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round;
-    }
-    #successCard h2 {
-      font-family: 'Kanit', sans-serif;
-      font-size: 22px;
-      font-weight: 900;
-      color: var(--text);
-      margin-bottom: 6px;
-    }
-    #successCard p {
-      font-size: 15px;
-      color: var(--sub);
-      line-height: 1.65;
-    }
-    .id-pill {
-      display: inline-block;
-      margin-top: 18px;
-      padding: 10px 30px;
-      background: var(--success-l);
-      border: 1.5px solid var(--success-b);
-      color: var(--success);
-      font-family: 'Kanit', sans-serif;
-      font-weight: 700;
-      font-size: 24px;
-      border-radius: 999px;
-      letter-spacing: .06em;
-    }
-    .btn-again {
-      margin-top: 20px;
-      padding: 13px 28px;
-      background: var(--input-bg);
-      border: 1.5px solid var(--border);
-      border-radius: 12px;
-      font-family: 'Kanit', sans-serif;
-      font-size: 15px;
-      font-weight: 600;
-      color: var(--text);
-      cursor: pointer;
-      transition: all .2s;
-    }
+    #successCard { display: none; width: 100%; max-width: 520px; }
+    .success-inner { background: var(--card); border-radius: 20px; border: 1px solid var(--border); padding: 40px 24px; text-align: center; }
+    .ok-ring { width: 72px; height: 72px; border-radius: 50%; background: var(--success-l); border: 2px solid var(--success-b); display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; }
+    .ok-ring svg { width: 30px; height: 30px; stroke: var(--success); fill: none; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+    #successCard h2 { font-family: 'Kanit', sans-serif; font-size: 22px; font-weight: 900; color: var(--text); margin-bottom: 6px; }
+    #successCard p { font-size: 15px; color: var(--sub); line-height: 1.65; }
+    .id-pill { display: inline-block; margin-top: 18px; padding: 10px 30px; background: var(--success-l); border: 1.5px solid var(--success-b); color: var(--success); font-family: 'Kanit', sans-serif; font-weight: 700; font-size: 24px; border-radius: 999px; letter-spacing: .06em; }
+    .btn-again { margin-top: 20px; padding: 13px 28px; background: var(--input-bg); border: 1.5px solid var(--border); border-radius: 12px; font-family: 'Kanit', sans-serif; font-size: 15px; font-weight: 600; color: var(--text); cursor: pointer; transition: all .2s; }
     .btn-again:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-l); }
 
     /* ─── TOAST ─── */
-    .toast {
-      position: fixed;
-      top: 20px;
-      left: 50%;
-      transform: translateX(-50%) translateY(-10px);
-      padding: 11px 22px;
-      border-radius: 999px;
-      font-family: 'Sarabun', sans-serif;
-      font-size: 14px;
-      font-weight: 600;
-      color: #fff;
-      z-index: 999;
-      opacity: 0;
-      transition: opacity .25s, transform .25s;
-      pointer-events: none;
-      white-space: nowrap;
-    }
-    .toast.show {
-      opacity: 1;
-      transform: translateX(-50%) translateY(0);
-    }
+    .toast { position: fixed; top: 20px; left: 50%; transform: translateX(-50%) translateY(-10px); padding: 11px 22px; border-radius: 999px; font-family: 'Sarabun', sans-serif; font-size: 14px; font-weight: 600; color: #fff; z-index: 999; opacity: 0; transition: opacity .25s, transform .25s; pointer-events: none; white-space: nowrap; }
+    .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
 
     /* ─── MOBILE ─── */
     @media (max-width: 400px) {
@@ -451,7 +219,6 @@
 <!-- HEADER -->
 <div class="header">
   <div class="logo-mark">
-    <!-- drone / quadcopter svg -->
     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
       <circle cx="5"  cy="5"  r="2.2"/><circle cx="19" cy="5"  r="2.2"/>
       <circle cx="5"  cy="19" r="2.2"/><circle cx="19" cy="19" r="2.2"/>
@@ -481,7 +248,6 @@
 
   <div class="sec-body">
 
-    <!-- ชื่อ-นามสกุล -->
     <div class="field">
       <label class="label" for="name">ชื่อ-นามสกุล <span class="req">*</span></label>
       <div class="inp-wrap">
@@ -491,7 +257,6 @@
       <p class="err" id="nameErr">กรุณากรอกชื่อ-นามสกุล</p>
     </div>
 
-    <!-- ชื่อเล่น -->
     <div class="field">
       <label class="label" for="nickname">ชื่อเล่น (ไทย) <span class="req">*</span></label>
       <div class="inp-wrap">
@@ -509,7 +274,6 @@
       </div>
     </div>
 
-    <!-- Name ENG -->
     <div class="field">
       <label class="label" for="nameEng">ชื่อ-นามสกุล (ENG)</label>
       <div class="inp-wrap">
@@ -518,7 +282,6 @@
       </div>
     </div>
 
-    <!-- วันเดือนปีเกิด -->
     <div class="field">
       <label class="label">วันเกิด</label>
       <div class="dob-row">
@@ -549,7 +312,6 @@
       </div>
     </div>
 
-    <!-- เบอร์โทร -->
     <div class="field">
       <label class="label" for="phone">เบอร์โทรศัพท์</label>
       <div class="inp-wrap">
@@ -558,7 +320,7 @@
       </div>
     </div>
 
-  </div><!-- /sec-body -->
+  </div>
 
   <div class="divider"></div>
 
@@ -571,7 +333,6 @@
   </div>
 
   <div class="sec-body">
-
     <div class="type-grid">
       <button class="type-btn active" id="btnCourse" onclick="setType('Course')" type="button">
         <svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 2 1 3 6 3s6-1 6-3v-5"/></svg>
@@ -598,7 +359,7 @@
       </div>
     </div>
 
-  </div><!-- /sec-body -->
+  </div>
 
   <!-- ── SUBMIT ── -->
   <div class="submit-area">
@@ -622,9 +383,9 @@
       <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
     </div>
     <h2>สมัครสำเร็จแล้ว! 🎉</h2>
-    <p>ระบบบันทึกข้อมูลเรียบร้อยแล้ว<br>เป็นครอบครัว DroneBot แล้ว!</p>
+    <p>ระบบบันทึกข้อมูลเรียบร้อยแล้ว<br>ยินดีต้อนรับสู่ครอบครัว DroneBot!</p>
     <button class="btn-again" onclick="resetForm()" type="button">
-      <svg viewBox="0 0 24 24" style="width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vertical-align:-2px;margin-right:5px"><polyline points="15 18 9 12 15 6"/></svg>ย้อนกลับ
+      <svg viewBox="0 0 24 24" style="width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vertical-align:-2px;margin-right:5px"><polyline points="15 18 9 12 15 6"/></svg>สมัครอีกครั้ง
     </button>
   </div>
 </div>
@@ -634,7 +395,7 @@
 
 <script>
   // ════════════════════════════════
-  // ⚙️ CONFIG
+  // ⚙️ CONFIG — เปลี่ยน URL ตรงนี้
   // ════════════════════════════════
   const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxTUXQyfcacNjPY4AcbU22_ccmhFDEcGpQtVOu4L6CXqa5CMy9XECweaGdvAnniUSoO/exec";
 
@@ -650,36 +411,67 @@
       dayEl.appendChild(o);
     }
     const yearEl = document.getElementById("dobYear");
-    const now = new Date().getFullYear(); // ค.ศ.
+    const now = new Date().getFullYear();
     for (let y = now; y >= now - 80; y--) {
       const o = document.createElement("option");
-      o.value = y;
-      o.textContent = y;
+      o.value = y; o.textContent = y;
       yearEl.appendChild(o);
     }
   }
 
   // ─── Load Courses via JSONP ───
+  // ✅ ต้องให้ doGet ใน Code.gs รองรับ action=getCourseData ด้วย
   function loadCourses() {
     const sel = document.getElementById("courseSelect");
+    sel.innerHTML = '<option value="">— กำลังโหลดคอร์ส... —</option>';
+
     const cbName = "cb_courses_" + Date.now();
     window[cbName] = function(data) {
-      sel.innerHTML = '<option value="">— เลือกคอร์ส —</option>';
-      (data.data || []).forEach(c => {
-        const o = document.createElement("option");
-        o.value = c.id; o.textContent = c.name;
-        sel.appendChild(o);
-      });
+      const courses = data.data || [];
+      if (courses.length === 0) {
+        sel.innerHTML = '<option value="">— ไม่พบคอร์ส —</option>';
+      } else {
+        sel.innerHTML = '<option value="">— เลือกคอร์ส —</option>';
+        courses.forEach(c => {
+          const o = document.createElement("option");
+          o.value = c.id; o.textContent = c.name;
+          sel.appendChild(o);
+        });
+      }
+      // cleanup
       delete window[cbName];
-      document.getElementById("jsonp-courses").remove();
+      const el = document.getElementById("jsonp-courses");
+      if (el) el.remove();
     };
+
     const s = document.createElement("script");
     s.id  = "jsonp-courses";
     s.src = SCRIPT_URL + "?action=getCourseData&callback=" + cbName;
     s.onerror = () => {
-      sel.innerHTML = '<option value="">โหลดไม่สำเร็จ ลองรีเฟรช</option>';
+      sel.innerHTML = '<option value="">โหลดไม่สำเร็จ — กด retry</option>';
+      showRetryBtn();
     };
+    // timeout fallback 10 วินาที
+    const timeout = setTimeout(() => {
+      if (document.getElementById("jsonp-courses")) {
+        sel.innerHTML = '<option value="">โหลดนานเกินไป — กด retry</option>';
+        showRetryBtn();
+      }
+    }, 10000);
+    s.onload = () => clearTimeout(timeout);
     document.body.appendChild(s);
+  }
+
+  function showRetryBtn() {
+    const existing = document.getElementById("retryBtn");
+    if (existing) return;
+    const btn = document.createElement("button");
+    btn.id = "retryBtn";
+    btn.textContent = "🔄 โหลดคอร์สใหม่";
+    btn.type = "button";
+    btn.style.cssText = "margin-top:8px;padding:8px 16px;background:var(--accent-l);border:1.5px solid var(--accent);color:var(--accent);border-radius:10px;font-family:'Kanit',sans-serif;font-weight:600;font-size:14px;cursor:pointer;width:100%;";
+    btn.onclick = () => { btn.remove(); loadCourses(); };
+    document.getElementById("courseSlide").querySelector(".field").appendChild(btn);
   }
 
   // ─── Type Toggle ───
@@ -696,9 +488,11 @@
     const name     = document.getElementById("name").value.trim();
     const nickname = document.getElementById("nickname").value.trim();
     const course   = document.getElementById("courseSelect").value;
+
     document.getElementById("nameErr").classList.toggle("show",   !name);
     document.getElementById("nickErr").classList.toggle("show",   !nickname);
     document.getElementById("courseErr").classList.toggle("show", selectedType === "Course" && !course);
+
     if (!name || !nickname) ok = false;
     if (selectedType === "Course" && !course) ok = false;
     return ok;
@@ -746,7 +540,6 @@
       text.textContent      = "ยืนยันสมัคร";
     }
 
-    // ── ส่งผ่าน fetch POST content-type text/plain (GAS รับได้ ไม่ติด CORS preflight)
     try {
       const res  = await fetch(SCRIPT_URL, {
         method:  "POST",
@@ -755,17 +548,22 @@
       });
       const data = await res.json();
       if (data.status === "success") {
-        document.getElementById("formCard").style.display    = "none";
-        document.getElementById("successCard").style.display = "block";
-        showToast("บันทึกสำเร็จ ✓", "#1a7a4a");
+        showSuccess();
       } else {
         showToast(data.message || "เกิดข้อผิดพลาด กรุณาลองใหม่", "#d62839");
         resetBtn();
       }
     } catch(e) {
-      // fallback: ถ้า CORS block ให้ลองผ่าน JSONP submit
+      // CORS fallback ผ่าน JSONP
       submitViaJsonp(payload, resetBtn);
     }
+  }
+
+  function showSuccess() {
+    document.getElementById("formCard").style.display    = "none";
+    document.getElementById("successCard").style.display = "block";
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    showToast("บันทึกสำเร็จ ✓", "#1a7a4a");
   }
 
   // ── JSONP fallback สำหรับ submit ──
@@ -776,9 +574,7 @@
       const el = document.getElementById("jsonp-submit");
       if (el) el.remove();
       if (data.status === "success") {
-        document.getElementById("formCard").style.display    = "none";
-        document.getElementById("successCard").style.display = "block";
-        showToast("บันทึกสำเร็จ ✓", "#1a7a4a");
+        showSuccess();
       } else {
         showToast(data.message || "เกิดข้อผิดพลาด", "#d62839");
         onError();
@@ -803,8 +599,7 @@
     setType("Course");
     document.getElementById("successCard").style.display = "none";
     document.getElementById("formCard").style.display    = "block";
-    document.getElementById("btnSubmit").style.display   = "flex";
-    document.getElementById("submitIcon").style.display  = "block";
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
   // ─── Toast ───
