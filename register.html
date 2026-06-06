@@ -135,6 +135,8 @@
     .dob-row .sel-wrap select { padding-left: 12px; padding-right: 30px; font-size: 15px; }
     .dob-row .sel-wrap .chev { right: 9px; }
 
+
+
     /* ─── TYPE TOGGLE ─── */
     .type-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
     .type-btn {
@@ -237,6 +239,33 @@
 
 <!-- FORM CARD -->
 <div class="card" id="formCard">
+
+  <!-- ── เลือกสาขา ── -->
+  <div class="sec-head">
+    <div class="sec-icon">
+      <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+    </div>
+    <span class="sec-label">เลือกสาขา <span style="color:var(--accent)">*</span></span>
+  </div>
+
+  <div class="sec-body">
+    <div class="field" style="margin-bottom:0;">
+      <div class="inp-wrap sel-wrap">
+        <span class="ico">
+          <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+        </span>
+        <select id="branchSelect" onchange="setBranch(this.value)">
+          <option value="">— เลือกสาขา —</option>
+          <option value="hdy" selected>หาดใหญ่</option>
+          <option value="bkk">กรุงเทพ</option>
+        </select>
+        <span class="chev"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></span>
+      </div>
+      <p class="err" id="branchErr" style="margin-top:6px;">กรุณาเลือกสาขา</p>
+    </div>
+  </div>
+
+  <div class="divider"></div>
 
   <!-- ── ข้อมูลส่วนตัว ── -->
   <div class="sec-head">
@@ -399,7 +428,8 @@
   // ════════════════════════════════
   const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxTUXQyfcacNjPY4AcbU22_ccmhFDEcGpQtVOu4L6CXqa5CMy9XECweaGdvAnniUSoO/exec";
 
-  let selectedType = "Course";
+  let selectedType   = "Course";
+  let selectedBranch = "hdy"; // default หาดใหญ่
 
   // ─── Init DOB selects ───
   function initDOB() {
@@ -420,7 +450,6 @@
   }
 
   // ─── Load Courses via JSONP ───
-  // ✅ ต้องให้ doGet ใน Code.gs รองรับ action=getCourseData ด้วย
   function loadCourses() {
     const sel = document.getElementById("courseSelect");
     sel.innerHTML = '<option value="">— กำลังโหลดคอร์ส... —</option>';
@@ -438,7 +467,6 @@
           sel.appendChild(o);
         });
       }
-      // cleanup
       delete window[cbName];
       const el = document.getElementById("jsonp-courses");
       if (el) el.remove();
@@ -451,7 +479,6 @@
       sel.innerHTML = '<option value="">โหลดไม่สำเร็จ — กด retry</option>';
       showRetryBtn();
     };
-    // timeout fallback 10 วินาที
     const timeout = setTimeout(() => {
       if (document.getElementById("jsonp-courses")) {
         sel.innerHTML = '<option value="">โหลดนานเกินไป — กด retry</option>';
@@ -474,6 +501,12 @@
     document.getElementById("courseSlide").querySelector(".field").appendChild(btn);
   }
 
+  // ─── Branch Select ───
+  function setBranch(branch) {
+    selectedBranch = branch;
+    document.getElementById("branchErr").classList.remove("show");
+  }
+
   // ─── Type Toggle ───
   function setType(type) {
     selectedType = type;
@@ -492,9 +525,11 @@
     document.getElementById("nameErr").classList.toggle("show",   !name);
     document.getElementById("nickErr").classList.toggle("show",   !nickname);
     document.getElementById("courseErr").classList.toggle("show", selectedType === "Course" && !course);
+    document.getElementById("branchErr").classList.toggle("show", !selectedBranch);
 
     if (!name || !nickname) ok = false;
     if (selectedType === "Course" && !course) ok = false;
+    if (!selectedBranch) ok = false;
     return ok;
   }
 
@@ -530,6 +565,7 @@
       dob:         getDOB(),
       phone:       document.getElementById("phone").value.trim(),
       type:        selectedType,
+      branch:      selectedBranch,   // ← ส่ง branch ไปด้วย
       courseId:    selectedType === "Course" ? document.getElementById("courseSelect").value : ""
     };
 
@@ -554,7 +590,6 @@
         resetBtn();
       }
     } catch(e) {
-      // CORS fallback ผ่าน JSONP
       submitViaJsonp(payload, resetBtn);
     }
   }
@@ -595,7 +630,9 @@
   function resetForm() {
     ["name","nickname","nicknameEng","nameEng","phone"].forEach(id => document.getElementById(id).value = "");
     ["dobDay","dobMonth","dobYear","courseSelect"].forEach(id => document.getElementById(id).selectedIndex = 0);
-    ["nameErr","nickErr","courseErr"].forEach(id => document.getElementById(id).classList.remove("show"));
+    ["nameErr","nickErr","courseErr","branchErr"].forEach(id => document.getElementById(id).classList.remove("show"));
+    document.getElementById("branchSelect").value = "hdy";
+    setBranch("hdy");
     setType("Course");
     document.getElementById("successCard").style.display = "none";
     document.getElementById("formCard").style.display    = "block";
